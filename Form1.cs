@@ -27,6 +27,7 @@
             item.SubItems.Add(waterBill.VatTax.ToString());
             item.SubItems.Add(waterBill.TotalPayment.ToString());
             lsvWaterBill.Items.Add(item);
+            ResetForm();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -123,7 +124,7 @@
 
                 var waterBill = customer.GenerateWaterBill();
 
-                
+                lsvWaterBill.SelectedItems[0].Text = customer.Name;
                 item.SubItems[1].Text = customer.LastMonthReading.ToString();
                 item.SubItems[2].Text = customer.ThisMonthReading.ToString();
                 item.SubItems[3].Text = customer.Consumption.ToString();
@@ -133,6 +134,7 @@
                 item.SubItems[7].Text = waterBill.VatTax.ToString();
                 item.SubItems[8].Text = waterBill.TotalPayment.ToString();
                 Text = customer.Name;
+                ResetForm();
             }
         }
         private void btDelete_Click(object sender, EventArgs e)
